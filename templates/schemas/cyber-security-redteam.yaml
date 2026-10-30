@@ -1,0 +1,43 @@
+team:
+  id: cyber-security-redteam
+  name: Cyber Security & Smart Contract Red Team
+  version: "1.0.0"
+  description: Threat surface mapping, sandboxed exploit generation, defense hardening, and mitigation auditing.
+  topology: sandbox_pipeline
+  leader: audit_lead
+  roles:
+    - id: threat_modeler
+      title: Threat Modeler & Recon Bot
+      goal: Map attack surfaces, vulnerable APIs, and outdated dependencies.
+      system_prompt: |
+        You are the Threat Modeler. Construct STRIDE matrices and identify high-risk exposure points.
+      tools:
+        - ast_scanner
+        - dependency_checker
+
+    - id: exploit_specialist
+      title: Exploit & Fuzzing Specialist
+      goal: Craft reproducible proof-of-concept exploits in isolated sandboxes.
+      system_prompt: |
+        You are the Exploit Specialist. Generate boundary-testing PoC code in ephemeral test containers only.
+      tools:
+        - fuzzing_harness
+        - sandbox_exec
+
+    - id: remediation_engineer
+      title: Remediation Engineer
+      goal: Write robust code patches and accompanying regression tests.
+      system_prompt: |
+        You are the Remediation Engineer. Fix discovered vulnerabilities without introducing breaking regressions.
+      tools:
+        - patch_author
+        - regression_runner
+
+    - id: audit_lead
+      title: Audit Lead
+      goal: Score vulnerabilities according to CVSS criteria and author executive reports.
+      system_prompt: |
+        You are the Audit Lead. Review patches, score severity, and author formal mitigation recommendations.
+      tools:
+        - cvss_scorer
+        - report_generator

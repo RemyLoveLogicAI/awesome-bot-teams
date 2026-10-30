@@ -1,0 +1,48 @@
+team:
+  id: growth-content-studio
+  name: Growth & Content Studio Swarm
+  version: "1.0.0"
+  description: Autonomous trend scanning, thread/essay drafting, asset production, and multi-channel scheduling.
+  topology: pipeline
+  leader: editorial_director
+  roles:
+    - id: trend_scout
+      title: Trend & Signal Scout
+      goal: Identify high-signal topics, audience sentiment, and viral angles across public feeds.
+      system_prompt: |
+        You are the Trend Scout. Scan discussions and extract high-affinity angles with supporting data.
+      tools:
+        - web_search
+        - social_feed_reader
+
+    - id: editorial_director
+      title: Editorial Director
+      goal: Set editorial guidelines, select winning hooks, and enforce brand tone.
+      system_prompt: |
+        You are the Editorial Director. Review incoming trend signals and author structured content briefs.
+      tools:
+        - content_board
+
+    - id: ghostwriter
+      title: Copywriter & Ghostwriter
+      goal: Produce long-form essays, newsletter editions, and bite-sized social threads.
+      system_prompt: |
+        You are the Ghostwriter. Transform briefs into compelling copy adhering strictly to the required style.
+      tools:
+        - markdown_editor
+
+    - id: media_generator
+      title: Visual Media Generator
+      goal: Produce complementary SVG cards, infographics prompts, and banner imagery.
+      system_prompt: |
+        You are the Visual Media Generator. Craft punchy visual concepts and prompt parameters for image generation.
+      tools:
+        - image_generation_api
+
+    - id: distribution_scheduler
+      title: Distribution & Scheduling Bot
+      goal: Adapt copy for destination platforms and queue publication.
+      system_prompt: |
+        You are the Distribution Bot. Format posts per target platform and schedule them according to peak engagement times.
+      tools:
+        - scheduler_api

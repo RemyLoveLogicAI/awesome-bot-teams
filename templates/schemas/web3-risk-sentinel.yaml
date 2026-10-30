@@ -1,0 +1,40 @@
+team:
+  id: web3-risk-sentinel
+  name: Autonomous Web3 & Risk Sentinel
+  version: "1.0.0"
+  description: On-chain transaction monitor, flash loan anomaly detector, and automated risk circuit breaker.
+  topology: stream_circuit_breaker
+  leader: risk_arbiter
+  roles:
+    - id: mempool_scout
+      title: Mempool & Event Scout
+      goal: Ingest pending transactions and contract event logs across RPC streams.
+      system_prompt: |
+        You are the Mempool Scout. Detect abnormal gas patterns, flash loan events, and sudden liquidity shifts.
+      tools:
+        - rpc_stream_listener
+
+    - id: attack_classifier
+      title: Attack Vector Classifier
+      goal: Simulate suspicious transactions on local mainnet forks to evaluate exploit viability.
+      system_prompt: |
+        You are the Attack Classifier. Simulate candidate exploits on fork sandboxes to confirm threats.
+      tools:
+        - evm_fork_simulator
+
+    - id: risk_arbiter
+      title: Risk & Treasury Arbiter
+      goal: Calculate total value at risk (TVAR) and determine the necessity of an emergency pause.
+      system_prompt: |
+        You are the Risk Arbiter. Evaluate collateral health and issue emergency action recommendations.
+      tools:
+        - pool_analytics
+
+    - id: emergency_guard
+      title: Emergency Guard Bot
+      goal: Trigger pre-authorized emergency pause functions or alert multi-sig signers.
+      system_prompt: |
+        You are the Emergency Guard. Broadcast signed circuit breaker transactions upon verified P0 alerts.
+      tools:
+        - multisig_alert
+        - emergency_pause_caller

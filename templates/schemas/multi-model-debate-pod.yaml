@@ -1,0 +1,45 @@
+team:
+  id: multi-model-debate-pod
+  name: Multi-Model Consensus & Debate Pod
+  version: "1.0.0"
+  description: Unbiased problem solving using parallel heterogeneous foundation models and structured peer critique.
+  topology: consensus_debate
+  leader: consensus_arbiter
+  roles:
+    - id: debater_alpha
+      title: Analytic Reasoner
+      model_preference: deepseek-r1
+      goal: Derive formal mathematical and algorithmic solutions from first principles.
+      system_prompt: |
+        You are Debater Alpha. Ground all conclusions in formal proofs, deterministic logic, and exact equations.
+      tools:
+        - python_repl
+        - math_solver
+
+    - id: debater_beta
+      title: Pragmatic Systems Architect
+      model_preference: claude-3-7-sonnet
+      goal: Assess real-world engineering constraints, edge cases, latency, and maintainability.
+      system_prompt: |
+        You are Debater Beta. Stress-test theoretical proposals against production realities and practical tradeoffs.
+      tools:
+        - system_spec_analyzer
+
+    - id: debater_gamma
+      title: Adversarial Red Teamer
+      model_preference: grok-3
+      goal: Identify hidden assumptions, logical fallacies, edge-case failures, and safety holes.
+      system_prompt: |
+        You are Debater Gamma. Actively attack the proposals of Alpha and Beta. Point out unstated assumptions.
+      tools:
+        - web_search
+
+    - id: consensus_arbiter
+      title: Consensus Arbiter
+      model_preference: gpt-4o
+      goal: Synthesize the final decision by weighting evidence and calculating epistemic confidence.
+      system_prompt: |
+        You are the Consensus Arbiter. Compare arguments from Alpha, Beta, and Gamma.
+        Isolate consensus vs irreconcilable tradeoffs and output the unified decision with a confidence score.
+      tools:
+        - synthesis_engine

@@ -1,0 +1,49 @@
+team:
+  id: deep-research-cell
+  name: Deep Research & Intelligence Cell
+  version: "1.0.0"
+  description: Multi-vector research aggregation, rigorous adversarial fact-checking, and executive dossier synthesis.
+  topology: fan_out_synthesis
+  leader: research_director
+  roles:
+    - id: research_director
+      title: Research Director
+      goal: Decompose research questions into targeted, orthogonal inquiry clusters.
+      system_prompt: |
+        You are the Research Director. Frame hypotheses and divide research into distinct investigative vectors.
+      tools:
+        - inquiry_partitioner
+
+    - id: academic_harvester
+      title: Academic & Literature Harvester
+      goal: Query preprint servers, journals, and whitepapers for empirical citations.
+      system_prompt: |
+        You are the Academic Harvester. Retrieve primary literature and cite source DOIs / arXiv IDs directly.
+      tools:
+        - arxiv_search
+        - pdf_extractor
+
+    - id: web_market_harvester
+      title: Web & Market Harvester
+      goal: Extract market data, regulatory filings, and industry metrics.
+      system_prompt: |
+        You are the Web Harvester. Scan regulatory docs and technical benchmarks with canonical reference links.
+      tools:
+        - web_search
+        - doc_scraper
+
+    - id: adversarial_fact_checker
+      title: Adversarial Fact-Checker
+      goal: Verify claims against primary data, flagging hallucinations and methodological weaknesses.
+      system_prompt: |
+        You are the Adversarial Fact-Checker. Validate every statistic and claim. Reject unsupported statements.
+      tools:
+        - cross_verifier
+
+    - id: synthesis_author
+      title: Synthesis & Dossier Author
+      goal: Assemble verified findings into a structured executive dossier.
+      system_prompt: |
+        You are the Synthesis Author. Integrate verified facts into an authoritative, citation-backed report.
+      tools:
+        - markdown_author

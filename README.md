@@ -2,7 +2,7 @@
 
 > A curated list of awesome bot teams, multi-agent frameworks, collaborative AI bot stacks, role templates, and operational setups for autonomous and human-in-the-loop workflows.
 
-Whether you are coordinating multi-agent software engineering squads, running autonomous content studios, orchestrating customer ops, or deploying specialized bot clusters like Grok bot, Mausbot, and OpenMausbot, this repository provides frameworks, protocols, and ready-to-initiate team templates.
+Whether you are coordinating multi-agent software engineering squads, running autonomous content studios, orchestrating customer ops, or deploying specialized bot clusters like Grok bot, Mausbot, and OpenMausbot, this repository provides frameworks, protocols, executable schemas, and ready-to-initiate team templates.
 
 ---
 
@@ -10,13 +10,16 @@ Whether you are coordinating multi-agent software engineering squads, running au
 
 - [Platforms & Bot Runtimes](#platforms--bot-runtimes)
 - [Bot Teams & Noteworthy Swarms](#bot-teams--noteworthy-swarms)
+- [Instant Team Initiation CLI](#instant-team-initiation-cli)
 - [Ready-to-Initiate Team Templates](#ready-to-initiate-team-templates)
-  - [Software Engineering Squad](#1-software-engineering-squad)
-  - [Solo Founder & Executive Cockpit](#2-solo-founder--executive-cockpit)
-  - [Growth & Content Studio Swarm](#3-growth--content-studio-swarm)
-  - [Deep Research & Intelligence Cell](#4-deep-research--intelligence-cell)
-  - [Cyber Security & Red Team](#5-cyber-security--red-team)
-  - [Community & Support Guild](#6-community--support-guild)
+  - [1. Software Engineering Squad](#1-software-engineering-squad)
+  - [2. Multi-Model Consensus & Debate Pod](#2-multi-model-consensus--debate-pod)
+  - [3. Solo Founder & Executive Cockpit](#3-solo-founder--executive-cockpit)
+  - [4. Growth & Content Studio Swarm](#4-growth--content-studio-swarm)
+  - [5. Deep Research & Intelligence Cell](#5-deep-research--intelligence-cell)
+  - [6. Cyber Security & Red Team](#6-cyber-security--red-team)
+  - [7. Community & Support Guild](#7-community--support-guild)
+  - [8. Autonomous Web3 & Risk Sentinel](#8-autonomous-web3--risk-sentinel)
 - [Team Topologies & Orchestration](#team-topologies--orchestration)
 - [Communication & Coordination Protocols](#communication--coordination-protocols)
 - [Memory, State & Context Engines](#memory-state--context-engines)
@@ -52,48 +55,84 @@ Whether you are coordinating multi-agent software engineering squads, running au
 
 ---
 
+## Instant Team Initiation CLI
+
+This repository includes a zero-dependency CLI tool (`init-team.py`) to inspect, export, and bootstrap any squad template directly into executable code:
+
+```bash
+# Clone the repository
+git clone https://github.com/RemyLoveLogicAI/awesome-bot-teams.git
+cd awesome-bot-teams
+
+# List available squads
+python3 init-team.py --list
+
+# Export ready-to-run CrewAI code
+python3 init-team.py --template software-engineering-squad --export crewai
+
+# Export ready-to-run AutoGen code
+python3 init-team.py --template multi-model-debate-pod --export autogen
+
+# Export JSON schema
+python3 init-team.py --template web3-risk-sentinel --export json
+```
+
+---
+
 ## Ready-to-Initiate Team Templates
 
-Pre-configured role rosters, system prompt blueprints, handoff triggers, and input/output contracts. Each template is ready to deploy directly in your multi-agent orchestrator:
+Pre-configured role rosters, system prompt blueprints, handoff triggers, and input/output contracts. Each template comes with detailed Markdown specifications and programmatic YAML schemas in [`templates/schemas/`](templates/schemas/):
 
-| Template | Primary Topology | Target Use Case | Specs & Prompts |
-|:---|:---|:---|:---:|
-| **1. Software Engineering Squad** | Hierarchical + QA Gate | Architecture, implementation, adversarial testing, and release PRs. | [`View Template`](templates/software-engineering-squad.md) |
-| **2. Solo Founder Cockpit** | Hub-and-Spoke (Chief of Staff) | Strategic triage, revenue & burn monitoring, product roadmaps, customer support. | [`View Template`](templates/solo-founder-cockpit.md) |
-| **3. Growth & Content Studio** | Pipeline + Feedback Loop | Social media listening, thread/newsletter ghostwriting, visual cards, scheduling. | [`View Template`](templates/growth-content-studio.md) |
-| **4. Deep Research Cell** | Parallel Fan-out + Fact Check | Market intelligence, academic literature surveys, citation cross-examination. | [`View Template`](templates/deep-research-cell.md) |
-| **5. Cyber Security Red Team** | Sandbox Pipeline | Attack surface recon, automated fuzzing, exploit simulation, verified patching. | [`View Template`](templates/cyber-security-redteam.md) |
-| **6. Community Support Guild** | Frontline Triage + Tier Pods | Community greeting, docs FAQ resolution, moderation safety, human escalation. | [`View Template`](templates/community-support-guild.md) |
+| Template | Primary Topology | Target Use Case | Specs & Prompts | Executable Schema |
+|:---|:---|:---|:---:|:---:|
+| **1. Software Engineering Squad** | Hierarchical + QA Gate | Architecture, implementation, adversarial testing, release PRs. | [`Spec`](templates/software-engineering-squad.md) | [`YAML`](templates/schemas/software-engineering-squad.yaml) |
+| **2. Multi-Model Debate Pod** | Consensus & Cross-Critique | Unbiasing complex decisions, theorem proving, hallucination pruning. | [`Spec`](templates/multi-model-debate-pod.md) | [`YAML`](templates/schemas/multi-model-debate-pod.yaml) |
+| **3. Solo Founder Cockpit** | Hub-and-Spoke (Chief of Staff) | Strategic triage, revenue & burn monitoring, product roadmaps, support. | [`Spec`](templates/solo-founder-cockpit.md) | [`YAML`](templates/schemas/solo-founder-cockpit.yaml) |
+| **4. Growth & Content Studio** | Pipeline + Feedback Loop | Social listening, thread/newsletter ghostwriting, visual cards, scheduling. | [`Spec`](templates/growth-content-studio.md) | [`YAML`](templates/schemas/growth-content-studio.yaml) |
+| **5. Deep Research Cell** | Parallel Fan-out + Fact Check | Market intelligence, academic literature surveys, citation verification. | [`Spec`](templates/deep-research-cell.md) | [`YAML`](templates/schemas/deep-research-cell.yaml) |
+| **6. Cyber Security Red Team** | Sandbox Pipeline | Attack surface recon, automated fuzzing, exploit simulation, patching. | [`Spec`](templates/cyber-security-redteam.md) | [`YAML`](templates/schemas/cyber-security-redteam.yaml) |
+| **7. Community Support Guild** | Frontline Triage + Tier Pods | Community greeting, docs FAQ resolution, moderation safety, escalation. | [`Spec`](templates/community-support-guild.md) | [`YAML`](templates/schemas/community-support-guild.yaml) |
+| **8. Web3 & Risk Sentinel** | Stream Circuit Breaker | On-chain event monitoring, mempool exploit detection, treasury protection. | [`Spec`](templates/web3-risk-sentinel.md) | [`YAML`](templates/schemas/web3-risk-sentinel.yaml) |
 
 ### 1. Software Engineering Squad
 - **Roles**: Squad Architect, Implementer / Coder, Adversarial QA, DevOps & Release Bot.
 - **Protocol**: Spec-driven development with mandatory test suite execution before code lands on main.
-- **Link**: [templates/software-engineering-squad.md](templates/software-engineering-squad.md)
+- **Links**: [Specification](templates/software-engineering-squad.md) · [YAML Schema](templates/schemas/software-engineering-squad.yaml)
 
-### 2. Solo Founder & Executive Cockpit
+### 2. Multi-Model Consensus & Debate Pod
+- **Roles**: Debater Alpha (DeepSeek R1), Debater Beta (Claude 3.7 Sonnet), Debater Gamma (Grok 3), Consensus Arbiter (GPT-4o).
+- **Protocol**: Independent parallel solution generation followed by round-robin cross-critique and arbiter synthesis.
+- **Links**: [Specification](templates/multi-model-debate-pod.md) · [YAML Schema](templates/schemas/multi-model-debate-pod.yaml)
+
+### 3. Solo Founder & Executive Cockpit
 - **Roles**: Chief of Staff, Product Strategist, Revenue Sentinel, Customer Concierge.
 - **Protocol**: Asynchronous briefing digest with priority triage and cost/leak alerts.
-- **Link**: [templates/solo-founder-cockpit.md](templates/solo-founder-cockpit.md)
+- **Links**: [Specification](templates/solo-founder-cockpit.md) · [YAML Schema](templates/schemas/solo-founder-cockpit.yaml)
 
-### 3. Growth & Content Studio Swarm
+### 4. Growth & Content Studio Swarm
 - **Roles**: Trend & Signal Scout, Editorial Director, Ghostwriter, Media Generator, Distribution Scheduler.
 - **Protocol**: Trend-to-draft pipeline with human sign-off checkpoint for brand safety.
-- **Link**: [templates/growth-content-studio.md](templates/growth-content-studio.md)
+- **Links**: [Specification](templates/growth-content-studio.md) · [YAML Schema](templates/schemas/growth-content-studio.yaml)
 
-### 4. Deep Research & Intelligence Cell
+### 5. Deep Research & Intelligence Cell
 - **Roles**: Research Director, Parallel Harvesters, Adversarial Fact-Checker, Synthesis Author.
 - **Protocol**: Multi-vector querying followed by strict source verification and hallucination pruning.
-- **Link**: [templates/deep-research-cell.md](templates/deep-research-cell.md)
+- **Links**: [Specification](templates/deep-research-cell.md) · [YAML Schema](templates/schemas/deep-research-cell.yaml)
 
-### 5. Cyber Security & Red Team
+### 6. Cyber Security & Red Team
 - **Roles**: Recon & Threat Modeler, Exploit & Fuzzing Specialist, Remediation Engineer, Audit Lead.
 - **Protocol**: Isolated sandbox testing and patch verification against CVSS/OWASP criteria.
-- **Link**: [templates/cyber-security-redteam.md](templates/cyber-security-redteam.md)
+- **Links**: [Specification](templates/cyber-security-redteam.md) · [YAML Schema](templates/schemas/cyber-security-redteam.yaml)
 
-### 6. Community & Support Operations Guild
+### 7. Community & Support Operations Guild
 - **Roles**: Triage & Greeting Bot, Docs Concierge, Sentiment & Safety Guardian, Escalation Liaison.
 - **Protocol**: Immediate automated first response with structured handoff cards to human staff when confidence drops below 85%.
-- **Link**: [templates/community-support-guild.md](templates/community-support-guild.md)
+- **Links**: [Specification](templates/community-support-guild.md) · [YAML Schema](templates/schemas/community-support-guild.yaml)
+
+### 8. Autonomous Web3 & Risk Sentinel
+- **Roles**: Mempool & Event Scout, Attack Vector Classifier, Risk & Treasury Arbiter, Emergency Guard Bot.
+- **Protocol**: Stream monitoring with EVM fork exploit simulation and pre-authorized circuit breaker triggers.
+- **Links**: [Specification](templates/web3-risk-sentinel.md) · [YAML Schema](templates/schemas/web3-risk-sentinel.yaml)
 
 ---
 
@@ -103,8 +142,9 @@ Choosing the right communication topology prevents infinite loops and coordinati
 
 1. **Hierarchical / Supervisor (Hub-and-Spoke)**: A lead router bot breaks down problems and delegates tasks to domain specialists. Best for well-defined workflows where quality checks are required.
 2. **Sequential Pipeline (Assembly Line)**: Agent A produces an output consumed by Agent B, which passes to Agent C. Best for content creation, ETL pipelines, and document drafting.
-3. **Blackboard Architecture (Shared Memory Workspace)**: Agents read from and write to a common shared state/database independently. Best for complex problem-solving and open-ended research.
-4. **Peer-to-Peer Consensus Swarm**: Agents negotiate, critique, and vote on proposals until consensus is achieved. Best for decision analysis and adversarial code reviews.
+3. **Consensus Debate**: Multiple independent models critique each other's reasoning rounds before a neutral arbiter synthesizes the result. Best for high-stakes problem-solving and unbiasing outputs.
+4. **Blackboard Architecture (Shared Memory Workspace)**: Agents read from and write to a common shared state/database independently. Best for complex problem-solving and open-ended research.
+5. **Event-Driven Circuit Breaker**: Continuous streaming monitor triggering automated emergency pause routines when threat thresholds are breached. Best for security and financial risk.
 
 ---
 

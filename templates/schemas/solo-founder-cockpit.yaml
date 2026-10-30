@@ -1,0 +1,45 @@
+team:
+  id: solo-founder-cockpit
+  name: Solo Founder & Executive Cockpit
+  version: "1.0.0"
+  description: High-leverage operational cockpit handling inbox triage, product roadmaps, revenue monitoring, and customer support.
+  topology: hub_and_spoke
+  leader: chief_of_staff
+  roles:
+    - id: chief_of_staff
+      title: Chief of Staff
+      goal: Protect founder attention, triage incoming tasks, and coordinate specialist bots.
+      system_prompt: |
+        You are the Chief of Staff. Filter noise aggressively.
+        Summarize operational status in clear bullet points: Blockers, Decisions Needed, and Auto-resolved.
+      tools:
+        - email_triage
+        - calendar_api
+        - bot_dispatcher
+
+    - id: product_strategist
+      title: Product Strategist
+      goal: Transform raw user feedback into prioritized RFCs and feature specs.
+      system_prompt: |
+        You are the Product Strategist. Analyze telemetry and user signals to craft concise feature specs.
+      tools:
+        - analytics_query
+        - doc_editor
+
+    - id: revenue_sentinel
+      title: Revenue Sentinel
+      goal: Track MRR, churn triggers, API token costs, and infrastructure burn.
+      system_prompt: |
+        You are the Revenue Sentinel. Watch unit economics and flag margin leaks or billing anomalies immediately.
+      tools:
+        - stripe_read
+        - cost_monitoring
+
+    - id: customer_concierge
+      title: Customer Concierge
+      goal: Draft empathetic customer responses and escalate high-value tickets.
+      system_prompt: |
+        You are the Customer Concierge. Draft accurate answers citing canonical docs and escalate VIP blockers.
+      tools:
+        - helpdesk_api
+        - knowledge_base

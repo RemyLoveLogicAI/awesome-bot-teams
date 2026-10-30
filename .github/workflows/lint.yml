@@ -1,0 +1,26 @@
+name: Validate & Lint
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Test Team CLI & Schemas
+        run: |
+          python3 init-team.py --list
+          python3 init-team.py --template software-engineering-squad --export json
+          python3 init-team.py --template multi-model-debate-pod --export crewai
+          python3 init-team.py --template web3-risk-sentinel --export autogen
