@@ -1,0 +1,28 @@
+name: Feature Request
+description: Propose a new capability, export framework, or platform addition
+title: "[FEAT]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Suggest an enhancement or new feature for Awesome Bot Teams.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or Use Case
+      description: What challenge or workflow does this feature address?
+    validations:
+      required: true
+  - type: textarea
+    id: proposed_solution
+    attributes:
+      label: Proposed Solution / Architecture
+      description: Describe the design or export format you would like to see added.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Approaches
+      description: Any alternative solutions or workarounds you considered.

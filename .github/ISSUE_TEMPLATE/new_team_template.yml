@@ -1,0 +1,45 @@
+name: Propose New Team Template
+description: Submit a new bot squad, swarm blueprint, or multi-agent role roster
+title: "[TEMPLATE]: "
+labels: ["template", "community-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Propose a new team setup for the community catalog.
+  - type: input
+    id: team_name
+    attributes:
+      label: Team Name
+      placeholder: "e.g. Distributed Consensus Verification Pod"
+    validations:
+      required: true
+  - type: dropdown
+    id: topology
+    attributes:
+      label: Coordination Topology
+      options:
+        - hierarchical_gate
+        - pipeline
+        - consensus_debate
+        - fan_out_synthesis
+        - sandbox_pipeline
+        - triage_pod
+        - stream_circuit_breaker
+        - blackboard
+    validations:
+      required: true
+  - type: textarea
+    id: roles
+    attributes:
+      label: Role Roster & Capabilities
+      description: List roles, their responsibilities, system prompt seeds, and recommended models.
+    validations:
+      required: true
+  - type: textarea
+    id: use_cases
+    attributes:
+      label: Target Use Cases
+      description: When should developers use this team template?
+    validations:
+      required: true

@@ -1,8 +1,41 @@
 # Awesome Bot Teams [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-> A curated list of awesome bot teams, multi-agent frameworks, collaborative AI bot stacks, role templates, and operational setups for autonomous and human-in-the-loop workflows.
+<div align="center">
 
-Whether you are coordinating multi-agent software engineering squads, running autonomous content studios, orchestrating customer ops, or deploying specialized bot clusters like Grok bot, Mausbot, and OpenMausbot, this repository provides frameworks, protocols, executable schemas, and ready-to-initiate team templates.
+[![CI](https://github.com/RemyLoveLogicAI/awesome-bot-teams/actions/workflows/lint.yml/badge.svg)](https://github.com/RemyLoveLogicAI/awesome-bot-teams/actions)
+[![License: CC0-1.0](https://img.shields.io/badge/License-CC0_1.0-lightgrey.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![Frameworks](https://img.shields.io/badge/export-CrewAI%20%7C%20AutoGen%20%7C%20LangGraph-orange.svg)](#instant-team-initiation-cli)
+[![Docs](https://img.shields.io/badge/docs-specifications-blueviolet.svg)](docs/ARCHITECTURE.md)
+
+<p align="center">
+  <b>A curated list of awesome bot teams, multi-agent frameworks, collaborative AI bot stacks, role templates, and operational setups for autonomous and human-in-the-loop workflows.</b>
+</p>
+
+<sub>Built for engineers and operators coordinating agent swarms, software squads, autonomous research cells, and bot clusters like Grok bot, Mausbot, OpenMausbot, and OpenClaw.</sub>
+
+</div>
+
+---
+
+## Quickstart in 30 Seconds
+
+This repository includes a zero-dependency CLI tool ([`init-team.py`](init-team.py)) that validates and exports production-grade scaffolds for any bot team directly to **CrewAI**, **AutoGen**, or **LangGraph**:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/RemyLoveLogicAI/awesome-bot-teams.git
+cd awesome-bot-teams
+
+# 2. List all available team blueprints
+python3 init-team.py --list
+
+# 3. Export an instant runnable scaffold (CrewAI, AutoGen, or LangGraph)
+python3 init-team.py --template software-engineering-squad --export crewai
+python3 init-team.py --template multi-model-debate-pod --export autogen
+python3 init-team.py --template solo-founder-cockpit --export langgraph
+```
 
 ---
 
@@ -20,11 +53,12 @@ Whether you are coordinating multi-agent software engineering squads, running au
   - [6. Cyber Security & Red Team](#6-cyber-security--red-team)
   - [7. Community & Support Guild](#7-community--support-guild)
   - [8. Autonomous Web3 & Risk Sentinel](#8-autonomous-web3--risk-sentinel)
-- [Team Topologies & Orchestration](#team-topologies--orchestration)
+- [Team Topologies & Comparison Matrix](#team-topologies--comparison-matrix)
 - [Communication & Coordination Protocols](#communication--coordination-protocols)
 - [Memory, State & Context Engines](#memory-state--context-engines)
 - [Observability, Cockpits & TUIs](#observability-cockpits--tuis)
 - [Safety Brakes, Cost Governors & Human-in-the-Loop](#safety-brakes-cost-governors--human-in-the-loop)
+- [Documentation Hub](#documentation-hub)
 - [Contributing](#contributing)
 - [Code of Conduct](#code-of-conduct)
 - [License](#license)
@@ -42,6 +76,8 @@ Whether you are coordinating multi-agent software engineering squads, running au
 - [Swarms](https://github.com/kyegomez/swarms) - Enterprise-grade production framework for orchestrating reliable swarms of diverse AI models and specialized bots.
 - [Camel-AI](https://github.com/camel-ai/camel) - Communicative agent framework demonstrating cooperative autonomous role-playing via inception prompting.
 - [AgentVerse](https://github.com/OpenBMB/AgentVerse) - Modular platform for simulating autonomous agent environments, social dynamics, and task-solving teams.
+- [Smolagents](https://github.com/huggingface/smolagents) - Lightweight library by Hugging Face where agents write Python code actions instead of JSON tool calls.
+- [Semantic Kernel](https://github.com/microsoft/semantic-kernel) - Enterprise SDK by Microsoft integrating LLMs with conventional programming languages and agent routing.
 
 ---
 
@@ -51,31 +87,39 @@ Whether you are coordinating multi-agent software engineering squads, running au
 - [Mausbot](https://github.com) - Modular autonomous assistant bot specialized in task routing, system telemetry monitoring, and local-first automation.
 - [OpenMausbot](https://github.com) - Open-source variant of Mausbot providing decentralized agent tooling, customizable skills, and peer-to-peer bot handoffs.
 - [OpenClaw](https://github.com) - Sovereign personal agent framework and memory runtime designed for continuous operation and secure tool mesh integration.
-- [Smolagents](https://github.com/huggingface/smolagents) - Lightweight library by Hugging Face where agents write Python code actions instead of JSON tool calls.
+- [OpenHands](https://github.com/All-Hands-AI/OpenHands) - Open-source software development agent platform (formerly OpenDevin) capable of modifying code, running bash commands, and opening PRs.
+- [SWE-agent](https://github.com/SWE-agent/SWE-agent) - Autonomous software engineering agent by Princeton University that turns GitHub issues into resolved pull requests.
+- [Devv.ai](https://devv.ai) - AI-powered search engine and autonomous developer research assistant integrating repository-wide contextual grounding.
 
 ---
 
 ## Instant Team Initiation CLI
 
-This repository includes a zero-dependency CLI tool (`init-team.py`) to inspect, export, and bootstrap any squad template directly into executable code:
+The repository includes [`init-team.py`](init-team.py), a zero-dependency CLI tool to inspect, validate, and bootstrap multi-agent bot teams:
 
-```bash
-# Clone the repository
-git clone https://github.com/RemyLoveLogicAI/awesome-bot-teams.git
-cd awesome-bot-teams
-
-# List available squads
-python3 init-team.py --list
-
-# Export ready-to-run CrewAI code
-python3 init-team.py --template software-engineering-squad --export crewai
-
-# Export ready-to-run AutoGen code
-python3 init-team.py --template multi-model-debate-pod --export autogen
-
-# Export JSON schema
-python3 init-team.py --template web3-risk-sentinel --export json
 ```
+$ python3 init-team.py --list
+
+🤖 Available Awesome Bot Teams:
+
+  ID                             Topology               Description
+  -------------------------------------------------------------------------------------
+  community-support-guild        triage_pod             Community & Support Operations Guild
+  cyber-security-redteam         sandbox_pipeline       Cyber Security & Smart Contract Red Team
+  deep-research-cell             fan_out_synthesis      Deep Research & Intelligence Cell
+  growth-content-studio          pipeline               Growth & Content Studio Swarm
+  multi-model-debate-pod         consensus_debate       Multi-Model Consensus & Debate Pod
+  software-engineering-squad     hierarchical_gate      Autonomous Software Engineering Squad
+  solo-founder-cockpit           hub_and_spoke          Solo Founder & Executive Cockpit
+  web3-risk-sentinel             stream_circuit_breaker Autonomous Web3 & Risk Sentinel
+```
+
+### CLI Feature Matrix
+- **Schema Validation**: Run `python3 init-team.py --validate` to verify all YAML schemas against strict structural criteria.
+- **Direct Output to File**: Use `--output <path>` (e.g. `python3 init-team.py --template software-engineering-squad --export langgraph --output team.py`).
+- **Zero Third-Party Dependencies**: Runs strictly on standard library Python 3.8+.
+
+Read the complete [CLI Reference Manual](docs/CLI_REFERENCE.md) for advanced options.
 
 ---
 
@@ -136,15 +180,20 @@ Pre-configured role rosters, system prompt blueprints, handoff triggers, and inp
 
 ---
 
-## Team Topologies & Orchestration
+## Team Topologies & Comparison Matrix
 
-Choosing the right communication topology prevents infinite loops and coordination deadlocks:
+Choosing the right coordination topology prevents recursive tool loops, deadlocks, and token waste:
 
-1. **Hierarchical / Supervisor (Hub-and-Spoke)**: A lead router bot breaks down problems and delegates tasks to domain specialists. Best for well-defined workflows where quality checks are required.
-2. **Sequential Pipeline (Assembly Line)**: Agent A produces an output consumed by Agent B, which passes to Agent C. Best for content creation, ETL pipelines, and document drafting.
-3. **Consensus Debate**: Multiple independent models critique each other's reasoning rounds before a neutral arbiter synthesizes the result. Best for high-stakes problem-solving and unbiasing outputs.
-4. **Blackboard Architecture (Shared Memory Workspace)**: Agents read from and write to a common shared state/database independently. Best for complex problem-solving and open-ended research.
-5. **Event-Driven Circuit Breaker**: Continuous streaming monitor triggering automated emergency pause routines when threat thresholds are breached. Best for security and financial risk.
+| Topology Pattern | Control Flow | Best Use Case | Primary Bottleneck | Recommended Engine |
+|:---|:---|:---|:---|:---|
+| **Hierarchical Gate** | Supervisor $\to$ Worker $\to$ QA | Software Engineering, Formal RFCs | Supervisor latency | LangGraph / CrewAI |
+| **Sequential Pipeline** | Step $A \to$ Step $B \to$ Step $C$ | Content Creation, ETL Pipelines | Cascading errors | LangGraph / Swarms |
+| **Consensus Debate** | Cross-Critique $\to$ Arbiter | Algorithmic Decisions, Truth Auditing | Token consumption | AutoGen / CrewAI |
+| **Blackboard Workspace** | Shared Central State Store | Open-Ended Research, Memory Ops | State conflicts | Letta / Redis |
+| **Stream Circuit Breaker** | Ingest $\to$ Classify $\to$ Pause | DeFi Telemetry, Cloud Security | False positives | Custom Webhooks / SSE |
+| **Triage Pod** | Intake $\to$ Domain Routing $\to$ Staff | Support Desks, Discord Guilds | Unmatched intents | ElizaOS / LangGraph |
+
+Read the full [Architecture & Topologies Deep Dive](docs/ARCHITECTURE.md) for technical specifications.
 
 ---
 
@@ -162,8 +211,9 @@ Choosing the right communication topology prevents infinite loops and coordinati
 - [Letta (formerly MemGPT)](https://github.com/letta-ai/letta) - State management and memory runtime that provides persistent OS-like memory tiers for LLM agents.
 - [Mem.ai](https://mem.ai) - Self-organizing personal and team knowledge graph with semantic search and automatic context injection.
 - [Supermemory](https://supermemory.ai) - Durable bookmarking and context repository for AI agents and knowledge workers.
-- [Graphiti](https://github.com/getzep/graphiti) - Knowledge graph framework designed for dynamic, temporal multi-agent memory retrieval.
+- [Graphiti](https://github.com) - Knowledge graph framework designed for dynamic, temporal multi-agent memory retrieval.
 - [Chroma](https://github.com/chroma-core/chroma) - Open-source embedding vector database for agent episodic and semantic document memory.
+- [Cognee](https://github.com/topoteretes/cognee) - Memory management engine for AI applications using graph-native chunking.
 
 ---
 
@@ -172,16 +222,34 @@ Choosing the right communication topology prevents infinite loops and coordinati
 - [Langfuse](https://github.com/langfuse/langfuse) - Open source LLM engineering platform for tracing multi-agent execution graphs, latency, and cost.
 - [Arize Phoenix](https://github.com/Arize-ai/phoenix) - AI observability and evaluation platform with native trace visualizations for complex agent graphs.
 - [Helicone](https://github.com/Helicone/helicone) - Lightweight LLM proxy and caching gateway providing real-time cost, token tracking, and rate limiting.
+- [AgentOps](https://github.com/AgentOps-AI/agentops) - Operational observability suite for autonomous agents with replay tracking and compliance logging.
 - [Charm CLI (Bubble Tea / Lip Gloss)](https://github.com/charmbracelet/bubbletea) - Golang TUI framework for building decoupled, high-performance terminal cockpits for live bot operations.
 
 ---
 
 ## Safety Brakes, Cost Governors & Human-in-the-Loop
 
-- **Max Step Governors**: Enforce hard execution ceilings (e.g., maximum 15 turns per task) to prevent runaway recursive tool calls.
-- **Token & Dollar Budgets**: Pin strict monetary caps ($0.50 / task) with circuit breakers that halt execution if breached.
-- **Destructive Action Confirmation Gates**: Require cryptographic or human confirmation before executing `rm -rf`, `DROP TABLE`, public social posts, or fund transfers.
-- **Dead Man's Switches**: Automated heartbeat monitors that pause bot execution if the human operator disconnects or fails a verification challenge.
+Operating autonomous bot teams in production requires rigorous safety mechanisms:
+
+1. **Hard Turn Governors**: Enforce strict execution ceilings (e.g. maximum 15–20 turns per task) to prevent runaway recursive calls.
+2. **Financial Token Circuit Breakers**: Set dollar-based and token-based budget caps ($0.50 / task) with automatic halting.
+3. **Human Confirmation Gates**: Require explicit approval before mutating critical resources (`rm -rf`, `DROP TABLE`, fund transfers, external emails).
+4. **Isolated Sandboxes**: Execute untrusted code inside ephemeral Docker containers or microVMs with restricted network egress.
+5. **Dead Man's Switches**: Automated heartbeat loops that safely pause swarms if human operators disconnect.
+
+Read our complete [Safety & Governance Rules](docs/SAFETY_AND_GOVERNANCE.md) for implementation patterns.
+
+---
+
+## Documentation Hub
+
+Explore the modular technical documentation:
+
+- 🏛️ [Architecture & Topologies Deep Dive](docs/ARCHITECTURE.md) - Communication patterns, message envelopes, and loop prevention.
+- 💻 [CLI Reference Manual](docs/CLI_REFERENCE.md) - Complete flags and export guide for `init-team.py`.
+- 📋 [Template Authoring Guidelines](docs/TEMPLATE_GUIDELINES.md) - Specification standards for adding new squad blueprints.
+- 🛡️ [Safety & Governance Guide](docs/SAFETY_AND_GOVERNANCE.md) - Turn governors, budget circuit breakers, and sandbox isolation.
+- 📐 [Production Quality Standard](docs/PRODUCTION_STANDARD.md) - The authoritative standard for repository scaffolding and release gates.
 
 ---
 
@@ -192,6 +260,7 @@ Contributions are welcome! Please read the [Contribution Guidelines](CONTRIBUTIN
 ```bash
 git clone https://github.com/RemyLoveLogicAI/awesome-bot-teams.git
 cd awesome-bot-teams
+python3 init-team.py --validate
 ```
 
 ---
@@ -199,6 +268,22 @@ cd awesome-bot-teams
 ## Code of Conduct
 
 This project is governed by the [Contributor Covenant](CODE_OF_CONDUCT.md). By participating, you agree to uphold this code.
+
+---
+
+## Citation
+
+If you use these bot team templates, schemas, or orchestration patterns in your research or project, please cite:
+
+```bibtex
+@misc{awesome_bot_teams_2026,
+  author = {Jones, Jeremy},
+  title = {Awesome Bot Teams: Curated Multi-Agent Squads, Topologies, and Executable Schemas},
+  year = {2026},
+  publisher = {GitHub},
+  howpublished = {\url{https://github.com/RemyLoveLogicAI/awesome-bot-teams}}
+}
+```
 
 ---
 

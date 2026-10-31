@@ -1,0 +1,41 @@
+name: Bug Report
+description: Report a broken link, invalid schema, or CLI error in awesome-bot-teams
+title: "[BUG]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue! Please provide as much detail as possible.
+  - type: input
+    id: environment
+    attributes:
+      label: Environment & Runtime
+      description: Python version, operating system, and CLI version.
+      placeholder: "e.g. Python 3.11, macOS Sequoia, init-team.py v1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the Bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Exact commands executed or broken link encountered.
+      placeholder: |
+        1. Run `python3 init-team.py --template ...`
+        2. Encounter error ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should have happened.
+    validations:
+      required: true

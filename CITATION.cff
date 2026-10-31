@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use these bot team templates, schemas, or orchestration patterns in your research or project, please cite it as below."
+authors:
+  - family-names: "Jones"
+    given-names: "Jeremy"
+    alias: "RemyLoveLogicAI"
+title: "Awesome Bot Teams: Curated Multi-Agent Squads, Topologies, and Executable Schemas"
+version: 1.1.0
+date-released: 2026-10-31
+url: "https://github.com/RemyLoveLogicAI/awesome-bot-teams"
+license: CC0-1.0
+keywords:
+  - "ai-agents"
+  - "multi-agent-systems"
+  - "bot-teams"
+  - "agent-swarms"
+  - "autogen"
+  - "crewai"
+  - "langgraph"
+  - "mcp"
