@@ -23,7 +23,44 @@ python3 init-team.py [OPTIONS]
 | `--export` | `crewai`, `autogen`, `langgraph`, `json`, `yaml`, `markdown` | Specifies the output format or target orchestrator framework. Default: `markdown`. |
 | `--output` | `<file-path>` | Writes the generated code or schema directly to the specified file path. |
 | `--validate` | *None* | Validates all YAML schema files in `templates/schemas/` against structural integrity rules. |
+| `--cockpit`, `--tui` | *None* | Launches the interactive curses dual-mode terminal cockpit for human navigation. |
+| `--agent` | *None* | Launches the pipeable line-delimited JSONL protocol (1 request = 1 reply). |
 | `-h`, `--help` | *None* | Displays the CLI help message and exits. |
+
+---
+
+## 3. Dual-Mode Terminal Cockpit (`cockpit.py`)
+
+Adhering to the **agent-tui-cockpit** architectural pattern, the cockpit provides two synchronized interfaces:
+1. **Interactive TTY Mode**: Split-pane curses terminal interface for human navigation, code export, and live schema validation.
+2. **Piped Agent Mode**: Deterministic JSONL protocol on stdin/stdout for autonomous agents, sub-shells, and Charm/Bubble Tea clients.
+
+```bash
+# Launch interactive curses cockpit
+python3 cockpit.py
+
+# Or launch via init-team CLI
+python3 init-team.py --cockpit
+
+# Test JSONL agent protocol via pipe
+echo "list" | python3 cockpit.py
+echo "validate" | python3 cockpit.py
+echo "doctor" | python3 cockpit.py
+```
+
+### JSONL Protocol Specification
+- **Greeting Envelope**:
+  ```json
+  {"ok": true, "engine": "awesome-bot-teams-cockpit", "protocol": 1, "status": "ready", "teams_count": 8, "safety_brakes": {"max_steps": 15, "max_retry_attempts": 3}}
+  ```
+- **Supported Verbs**:
+  - `list` - Returns array of available teams and role counts.
+  - `get <template_id>` - Returns full team schema.
+  - `export <template_id> <framework>` - Exports framework code scaffold.
+  - `validate` - Validates all repository schemas.
+  - `doctor` / `providers` - Reports presence of provider API keys (zero secret leakage).
+  - `status` - Returns engine telemetry and model routing tier assignments.
+  - `quit` / `exit` - Cleanly closes the stream.
 
 ---
 

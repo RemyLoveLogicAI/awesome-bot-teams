@@ -320,8 +320,18 @@ def main():
                         default="markdown", help="Format to output the team configuration in")
     parser.add_argument("--output", type=str, help="File path to save output instead of stdout")
     parser.add_argument("--validate", action="store_true", help="Validate all schemas in templates/schemas/")
+    parser.add_argument("--cockpit", "--tui", action="store_true", help="Launch interactive dual-mode curses cockpit")
+    parser.add_argument("--agent", action="store_true", help="Launch pipeable JSONL agent protocol")
 
     args = parser.parse_args()
+
+    if args.cockpit or args.agent:
+        import cockpit
+        if args.agent:
+            cockpit.run_agent_mode()
+        else:
+            curses.wrapper(cockpit.curses_cockpit)
+        return
 
     if args.validate:
         valid = validate_schemas()

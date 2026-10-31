@@ -31,10 +31,18 @@ cd awesome-bot-teams
 # 2. List all available team blueprints
 python3 init-team.py --list
 
-# 3. Export an instant runnable scaffold (CrewAI, AutoGen, or LangGraph)
+# 3. Launch the Dual-Mode Terminal Cockpit (Curses TUI)
+python3 cockpit.py
+# Or launch via: python3 init-team.py --cockpit
+
+# 4. Export an instant runnable scaffold (CrewAI, AutoGen, or LangGraph)
 python3 init-team.py --template software-engineering-squad --export crewai
 python3 init-team.py --template multi-model-debate-pod --export autogen
 python3 init-team.py --template solo-founder-cockpit --export langgraph
+
+# 5. Pipe commands through the JSONL Agent Protocol
+echo "list" | python3 cockpit.py
+echo "validate" | python3 cockpit.py
 ```
 
 ---
