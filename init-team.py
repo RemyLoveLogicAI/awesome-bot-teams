@@ -40,12 +40,8 @@ def parse_simple_yaml(filepath):
                 continue
 
             if in_prompt:
-                if stripped.startswith("tools:") or stripped.startswith("model_preference:") or stripped.startswith("- id:"):
-                    if current_role is not None:
-                        current_role["system_prompt"] = " ".join(prompt_lines).strip()
-                    in_prompt = False
-                    prompt_lines = []
-                elif line.startswith("        ") or line.startswith("      "):
+                indent = len(line) - len(line.lstrip())
+                if indent > 6:
                     prompt_lines.append(stripped)
                     continue
                 else:
@@ -82,12 +78,16 @@ def parse_simple_yaml(filepath):
             else:
                 # Inside a role definition
                 if stripped.startswith("title:"):
+                    in_tools = False
                     current_role["title"] = stripped.split(":", 1)[1].strip().strip('"')
                 elif stripped.startswith("goal:"):
+                    in_tools = False
                     current_role["goal"] = stripped.split(":", 1)[1].strip().strip('"')
                 elif stripped.startswith("model_preference:"):
+                    in_tools = False
                     current_role["model_preference"] = stripped.split(":", 1)[1].strip().strip('"')
                 elif stripped.startswith("system_prompt: |"):
+                    in_tools = False
                     in_prompt = True
                     prompt_lines = []
                 elif stripped.startswith("tools:"):
@@ -95,6 +95,8 @@ def parse_simple_yaml(filepath):
                 elif in_tools and stripped.startswith("- "):
                     tool_name = stripped.split("- ", 1)[1].strip()
                     current_role["tools"].append(tool_name)
+                else:
+                    in_tools = False
 
     if in_prompt and current_role:
         current_role["system_prompt"] = " ".join(prompt_lines).strip()
@@ -115,12 +117,13 @@ def load_all_teams():
     return teams
 
 
-def validate_schemas():
+def validate_schemas(verbose=True):
     """
     Validates all schema files against required fields and consistency rules.
     """
     if not os.path.exists(SCHEMAS_DIR):
-        print(f"Error: Schemas directory '{SCHEMAS_DIR}' does not exist.", file=sys.stderr)
+        if verbose:
+            print(f"Error: Schemas directory '{SCHEMAS_DIR}' does not exist.", file=sys.stderr)
         return False
 
     errors = []
@@ -168,13 +171,33 @@ def validate_schemas():
         teams[base_name] = team
 
     if errors:
-        print("\n❌ Schema Validation Failed:")
-        for err in errors:
-            print(f"  • {err}")
+        if verbose:
+            print("\n❌ Schema Validation Failed:")
+            for err in errors:
+                print(f"  • {err}")
         return False
     else:
-        print(f"\n✅ All {len(files)} team schemas passed validation successfully!")
+        if verbose:
+            print(f"\n✅ All {len(files)} team schemas passed validation successfully!")
         return True
+
+
+def export_markdown(team):
+    """
+    Exports a clean Markdown summary for the specified team.
+    """
+    md = []
+    md.append(f"# {team.get('name')}")
+    md.append(f"**Topology**: `{team.get('topology')}` | **Leader**: `{team.get('leader')}`\n")
+    md.append(f"{team.get('description')}\n")
+    md.append("### Roles Roster:")
+    for r in team.get("roles", []):
+        md.append(f"- **{r.get('title', r['id'])}** (`{r['id']}`)")
+        md.append(f"  - Goal: {r.get('goal')}")
+        if r.get("tools"):
+            md.append(f"  - Tools: {', '.join(r['tools'])}")
+        md.append(f"  - System Seed: {r.get('system_prompt', '')[:120]}...\n")
+    return "\n".join(md)
 
 
 def export_crewai(team):
@@ -335,7 +358,12 @@ def main():
         if args.agent:
             cockpit.run_agent_mode()
         else:
-            curses.wrapper(cockpit.curses_cockpit)
+            try:
+                import curses
+                curses.wrapper(cockpit.curses_cockpit)
+            except Exception as e:
+                print(f"Could not initialize curses terminal ({e}). Launching agent mode:\n")
+                cockpit.run_agent_mode()
         return
 
     if args.validate:
@@ -377,18 +405,7 @@ def main():
             result_text = f"# Schema file not found for {args.template}"
     else:
         # Default Markdown summary
-        md = []
-        md.append(f"\n# {selected.get('name')}")
-        md.append(f"**Topology**: `{selected.get('topology')}` | **Leader**: `{selected.get('leader')}`\n")
-        md.append(f"{selected.get('description')}\n")
-        md.append("### Roles Roster:")
-        for r in selected.get("roles", []):
-            md.append(f"- **{r.get('title', r['id'])}** (`{r['id']}`)")
-            md.append(f"  - Goal: {r.get('goal')}")
-            if r.get("tools"):
-                md.append(f"  - Tools: {', '.join(r['tools'])}")
-            md.append(f"  - System Seed: {r.get('system_prompt', '')[:120]}...\n")
-        result_text = "\n".join(md)
+        result_text = export_markdown(selected)
 
     if args.output:
         with open(args.output, "w", encoding="utf-8") as f:

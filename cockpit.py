@@ -28,6 +28,7 @@ validate_schemas = init_team_mod.validate_schemas
 export_crewai = init_team_mod.export_crewai
 export_autogen = init_team_mod.export_autogen
 export_langgraph = init_team_mod.export_langgraph
+export_markdown = getattr(init_team_mod, "export_markdown", None)
 
 MAX_ATTEMPTS_DEFAULT = 3
 MAX_STEPS_DEFAULT = 15
@@ -160,13 +161,13 @@ def run_agent_mode(demo=False):
             sys.stdout.flush()
 
         elif verb == "validate":
-            valid = validate_schemas()
+            valid = validate_schemas(verbose=False)
             sys.stdout.write(json.dumps({"ok": valid, "schemas_valid": valid, "count": len(teams)}) + "\n")
             sys.stdout.flush()
 
         elif verb == "export":
             if len(parts) < 3:
-                sys.stdout.write(json.dumps({"ok": False, "error": "Usage: export <template_id> <crewai|autogen|langgraph|json|yaml>"}) + "\n")
+                sys.stdout.write(json.dumps({"ok": False, "error": "Usage: export <template_id> <crewai|autogen|langgraph|json|yaml|markdown>"}) + "\n")
             else:
                 tid, fmt = parts[1], parts[2].lower()
                 if tid not in teams:
@@ -187,6 +188,11 @@ def run_agent_mode(demo=False):
                         if os.path.exists(schema_path):
                             with open(schema_path, "r", encoding="utf-8") as f:
                                 code = f.read()
+                    elif fmt == "markdown":
+                        if export_markdown:
+                            code = export_markdown(selected)
+                        else:
+                            code = f"# {selected.get('name')}"
                     else:
                         code = f"# Unsupported format: {fmt}"
                     sys.stdout.write(json.dumps({"ok": True, "template": tid, "format": fmt, "code": code}) + "\n")
@@ -351,7 +357,7 @@ def curses_cockpit(stdscr, demo=False):
             if current_idx < len(team_keys) - 1:
                 current_idx += 1
         elif key in [ord('v'), ord('V')]:
-            valid = validate_schemas()
+            valid = validate_schemas(verbose=False)
             if valid:
                 status_msg = f"✅ All {len(team_keys)} team schemas passed validation!"
                 status_color = 2

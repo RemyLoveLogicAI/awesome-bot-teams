@@ -19,3 +19,4 @@ env/
 AGENTS.md
 .agent/
 *.log
+*_scaffold.py
