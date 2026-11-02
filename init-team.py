@@ -40,7 +40,12 @@ def parse_simple_yaml(filepath):
                 continue
 
             if in_prompt:
-                if line.startswith("      ") or line.startswith("        "):
+                if stripped.startswith("tools:") or stripped.startswith("model_preference:") or stripped.startswith("- id:"):
+                    if current_role is not None:
+                        current_role["system_prompt"] = " ".join(prompt_lines).strip()
+                    in_prompt = False
+                    prompt_lines = []
+                elif line.startswith("        ") or line.startswith("      "):
                     prompt_lines.append(stripped)
                     continue
                 else:
@@ -195,7 +200,7 @@ from crewai import Agent, Crew, Process, Task
 squad_crew = Crew(
     agents=[{", ".join(agents)}],
     tasks=[], # Attach tasks matching team topology: {team.get("topology", "sequential")}
-    process=Process.hierarchical if "{team.get("topology")}" == "hierarchical_gate" else Process.sequential,
+    process=Process.hierarchical if "{team.get("topology")}" in ["hierarchical_gate", "hierarchical_proxy_gate"] else Process.sequential,
     verbose=True
 )
 

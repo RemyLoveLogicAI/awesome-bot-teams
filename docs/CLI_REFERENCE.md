@@ -84,6 +84,7 @@ python3 init-team.py --list
   software-engineering-squad     hierarchical_gate      Autonomous Software Engineering Squad
   solo-founder-cockpit           hub_and_spoke          Solo Founder & Executive Cockpit
   web3-risk-sentinel             stream_circuit_breaker Autonomous Web3 & Risk Sentinel
+  zero-trust-autonomous-squad    hierarchical_proxy_gate Zero-Trust Autonomous Squad
 ```
 
 ### 3.2. Export to CrewAI

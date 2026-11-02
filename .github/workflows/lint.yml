@@ -30,6 +30,9 @@ jobs:
           python3 init-team.py --template multi-model-debate-pod --export crewai
           python3 init-team.py --template solo-founder-cockpit --export autogen
           python3 init-team.py --template cyber-security-redteam --export langgraph
+          python3 init-team.py --template zero-trust-autonomous-squad --export crewai
+          python3 init-team.py --template zero-trust-autonomous-squad --export autogen
+          python3 init-team.py --template zero-trust-autonomous-squad --export langgraph
 
       - name: Verify Documentation & Asset Links
         run: |

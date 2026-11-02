@@ -16,6 +16,7 @@ graph TD
         C[Consensus Debate]
         D[Blackboard Workspace]
         E[Event-Driven Circuit Breaker]
+        F[Push-Approval Proxy Gate]
     end
 ```
 
@@ -48,6 +49,12 @@ graph TD
 - **Strength**: Sub-second response times for security defense and financial risk containment.
 - **Failure Mode**: False positives causing unnecessary service interruptions.
 - **Used In**: [Autonomous Web3 & Risk Sentinel](../templates/web3-risk-sentinel.md).
+
+### 1.6. Push-Approval Gate (`hierarchical_proxy_gate`)
+- **Structure**: An orchestrator supervises specialist workers holding only revocable virtual keys (`shieldnode_...`). Read-only operations pass with rate limits; mutating actions route through an outbound proxy that dispatches biometric push-confirmation to the operator's mobile device before injecting real credentials.
+- **Strength**: Complete immunity to raw credential leakage, full audit trail, and zero unconfirmed production mutations.
+- **Failure Mode**: Mutation stall if human operator does not acknowledge push notifications in a timely window.
+- **Used In**: [Zero-Trust Autonomous Squad](../templates/zero-trust-autonomous-squad.md).
 
 ---
 

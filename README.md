@@ -61,6 +61,7 @@ echo "validate" | python3 cockpit.py
   - [6. Cyber Security & Red Team](#6-cyber-security--red-team)
   - [7. Community & Support Guild](#7-community--support-guild)
   - [8. Autonomous Web3 & Risk Sentinel](#8-autonomous-web3--risk-sentinel)
+  - [9. Zero-Trust Autonomous Squad](#9-zero-trust-autonomous-squad)
 - [Team Topologies & Comparison Matrix](#team-topologies--comparison-matrix)
 - [Communication & Coordination Protocols](#communication--coordination-protocols)
 - [Memory, State & Context Engines](#memory-state--context-engines)
@@ -120,6 +121,7 @@ $ python3 init-team.py --list
   software-engineering-squad     hierarchical_gate      Autonomous Software Engineering Squad
   solo-founder-cockpit           hub_and_spoke          Solo Founder & Executive Cockpit
   web3-risk-sentinel             stream_circuit_breaker Autonomous Web3 & Risk Sentinel
+  zero-trust-autonomous-squad    hierarchical_proxy_gate Zero-Trust Autonomous Squad
 ```
 
 ### CLI Feature Matrix
@@ -145,6 +147,7 @@ Pre-configured role rosters, system prompt blueprints, handoff triggers, and inp
 | **6. Cyber Security Red Team** | Sandbox Pipeline | Attack surface recon, automated fuzzing, exploit simulation, patching. | [`Spec`](templates/cyber-security-redteam.md) | [`YAML`](templates/schemas/cyber-security-redteam.yaml) |
 | **7. Community Support Guild** | Frontline Triage + Tier Pods | Community greeting, docs FAQ resolution, moderation safety, escalation. | [`Spec`](templates/community-support-guild.md) | [`YAML`](templates/schemas/community-support-guild.yaml) |
 | **8. Web3 & Risk Sentinel** | Stream Circuit Breaker | On-chain event monitoring, mempool exploit detection, treasury protection. | [`Spec`](templates/web3-risk-sentinel.md) | [`YAML`](templates/schemas/web3-risk-sentinel.yaml) |
+| **9. Zero-Trust Autonomous Squad** | Hierarchical + Push Gate | Zero-credential ops, ShieldNode biometric push approval, high-stakes mutations. | [`Spec`](templates/zero-trust-autonomous-squad.md) | [`YAML`](templates/schemas/zero-trust-autonomous-squad.yaml) |
 
 ### 1. Software Engineering Squad
 - **Roles**: Squad Architect, Implementer / Coder, Adversarial QA, DevOps & Release Bot.
@@ -186,6 +189,11 @@ Pre-configured role rosters, system prompt blueprints, handoff triggers, and inp
 - **Protocol**: Stream monitoring with EVM fork exploit simulation and pre-authorized circuit breaker triggers.
 - **Links**: [Specification](templates/web3-risk-sentinel.md) · [YAML Schema](templates/schemas/web3-risk-sentinel.yaml)
 
+### 9. Zero-Trust Autonomous Squad
+- **Roles**: Squad Lead / Orchestrator, Recon / Analyst, Critical Operator / Executor, Security Auditor / Log Sentinel.
+- **Protocol**: Zero raw credential exposure with revocable ShieldNode virtual keys and biometric mobile push-approval gating on critical state mutations.
+- **Links**: [Specification](templates/zero-trust-autonomous-squad.md) · [YAML Schema](templates/schemas/zero-trust-autonomous-squad.yaml)
+
 ---
 
 ## Team Topologies & Comparison Matrix
@@ -200,6 +208,7 @@ Choosing the right coordination topology prevents recursive tool loops, deadlock
 | **Blackboard Workspace** | Shared Central State Store | Open-Ended Research, Memory Ops | State conflicts | Letta / Redis |
 | **Stream Circuit Breaker** | Ingest $\to$ Classify $\to$ Pause | DeFi Telemetry, Cloud Security | False positives | Custom Webhooks / SSE |
 | **Triage Pod** | Intake $\to$ Domain Routing $\to$ Staff | Support Desks, Discord Guilds | Unmatched intents | ElizaOS / LangGraph |
+| **Push-Approval Gate** | Lead $\to$ Operator $\to$ ShieldNode $\to$ Human App | Zero-Trust Ops, Sensitive Deployments, Payments | Mobile operator latency | LangGraph / CrewAI / ShieldNode |
 
 Read the full [Architecture & Topologies Deep Dive](docs/ARCHITECTURE.md) for technical specifications.
 

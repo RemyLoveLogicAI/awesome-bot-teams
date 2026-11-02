@@ -85,6 +85,7 @@ def get_provider_diagnostics():
         "GROK_API_KEY": os.environ.get("GROK_API_KEY"),
         "DEEPSEEK_API_KEY": os.environ.get("DEEPSEEK_API_KEY"),
         "GITHUB_TOKEN": os.environ.get("GITHUB_TOKEN"),
+        "SHIELDNODE_API_KEY": os.environ.get("SHIELDNODE_API_KEY"),
     }
     status = {}
     for k, v in keys.items():
